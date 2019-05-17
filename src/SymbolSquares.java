@@ -1,5 +1,15 @@
 import java.util.Random;
 
+/**
+ * Single Symbol Squares
+ * Daily Challenge 368 - Intermediate
+ * https://www.reddit.com/r/dailyprogrammer/comments/9z3mjk/20181121_challenge_368_intermediate_singlesymbol/
+ *
+ * Given a grid size N, find an NxN layout of X's and O's such that no axis-aligned square (2x2 or larger)
+ * within the grid has the same symbol at each of its four corners. That is, if four cells of the grid form a square,
+ * they must not be either all X's or all O's.
+ */
+
 public class SymbolSquares {
 
     private String[][] grid;
@@ -12,6 +22,11 @@ public class SymbolSquares {
        findValid(n);
     }
 
+    /**
+     * recursively calls itself until a valid solution is found
+     * tries to fix a grid max 100 times before re-generating
+     * @param n
+     */
     public void findValid(int n){
         boolean valid = false;
         this.grid = gridArray(n);
@@ -61,6 +76,13 @@ public class SymbolSquares {
         return grid;
     }
 
+    /**
+     * Finds "squares" in the grid
+     * Squares are where each corner of a square that is kxk are the same symbol
+     * Squares are atleast 2x2
+     * when a square is found the topleft character is swapped
+     * @return altered grid
+     */
     public boolean findSquares(){
         // Squares are where each corner is the same symbol
         // Squares are 2x2 or larger
